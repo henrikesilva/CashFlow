@@ -25,6 +25,7 @@
     <PackageReference Include="ClosedXML" Version="0.102.2" />
     <PackageReference Include="FluentValidation" Version="11.9.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.0" />
+    <PackageReference Include="PDFsharp" Version="6.0.0" />
     <PackageReference Include="PDFsharp-MigraDoc" Version="6.1.0-preview-3" />
   </ItemGroup>
 
@@ -32,6 +33,12 @@
     <ProjectReference Include="..\CashFlow.Communication\CashFlow.Communication.csproj" />
     <ProjectReference Include="..\CashFlow.Domain\CashFlow.Domain.csproj" />
     <ProjectReference Include="..\CashFlow.Exception\CashFlow.Exception.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="UseCases\Expenses\Reports\Pdf\Logo\ProfilePhoto.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

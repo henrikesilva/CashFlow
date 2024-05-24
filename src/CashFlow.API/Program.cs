@@ -7,7 +7,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(options =>
+    options.UseDateOnlyTimeOnlyStringConverters()
+);
 
 builder.Services.AddMvc(options => options.Filters.Add(typeof(ExceptionFilter)));
 
