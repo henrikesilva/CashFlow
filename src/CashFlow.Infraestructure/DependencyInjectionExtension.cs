@@ -29,7 +29,8 @@ public static class DependencyInjectionExtension
 
         services.AddDbContext<CashFlowDbContext>(config =>
         {
-            config.UseNpgsql(connectionString);
+            config.UseNpgsql(connectionString)
+                .UseSnakeCaseNamingConvention();
         });
     }
 }

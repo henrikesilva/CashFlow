@@ -36,7 +36,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="UseCases\Expenses\Reports\Pdf\Logo\ProfilePhoto.png">
+    <None Update="Logo\ProfilePhoto.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
