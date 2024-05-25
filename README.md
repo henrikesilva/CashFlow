@@ -17,6 +17,14 @@ Para as validações, o **FluentValidation** é usado para implementar regras de
 - **RESTful API com Documentação Swagger**: Interface documentada que facilita a integração e o teste por parte dos desenvolvedores.
 - **Conceitos de SOLID**: Estrutura do projeto construída seguindo princípios do SOLID afim de facilitar a manutenção e legibilidade dos código.
 
+## Construído com
+
+![badge-dot-net]
+![badge-visual-studio]
+![badge-windows]
+![badge-swagger]
+![badge-postgre-sql]
+
 ## Getting Started
 
 Para obter uma cópia local funcionando, siga estes passos simples.
@@ -49,3 +57,10 @@ Para obter uma cópia local funcionando, siga estes passos simples.
 
 <!-- Images -->
 [hero-image]: images/heroimage.png
+
+<!-- Badges -->
+[badge-dot-net]: https://img.shields.io/badge/.NET-512BD4?logo=dotnet&logoColor=fff&style=for-the-badge
+[badge-visual-studio]: https://img.shields.io/badge/Visual%20Studio-5C2D91?logo=visualstudio&logoColor=fff&style=for-the-badge
+[badge-windows]: https://img.shields.io/badge/Windows-0078D4?logo=windows&logoColor=fff&style=for-the-badge
+[badge-swagger]: https://img.shields.io/badge/Swagger-85EA2D?logo=swagger&logoColor=000&style=for-the-badge
+[badge-postgre-sql]: https://img.shields.io/badge/PostgreSQL-4169E1?logo=postgresql&logoColor=fff&style=for-the-badge
