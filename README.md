@@ -46,13 +46,16 @@ Para obter uma cópia local funcionando, siga estes passos simples.
     - *Caso opte por utilizar uma instância diferente de banco de dados*
 3. Execute a API e aproveite o seu teste :)
 
+### Teste em Produção
 
+Caso você opte, pode efetuar os testes na API publicada em produção a partir da branch main através desse [link][deployed]
 
 
 
 
 <!-- Links -->
 [render]: https://render.com
+[deployed]: https://cashflow-5anp.onrender.com/swagger/index.html
 [dot-net-sdk]: https://dotnet.microsoft.com/pt-br/download/dotnet/8.0
 
 <!-- Images -->
