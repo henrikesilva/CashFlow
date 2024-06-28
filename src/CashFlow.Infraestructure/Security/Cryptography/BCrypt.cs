@@ -1,7 +1,7 @@
-﻿using CashFlow.Domain.Security;
+﻿using CashFlow.Domain.Security.Cryptography;
 using BC = BCrypt.Net.BCrypt;
 
-namespace CashFlow.Infraestructure.Security;
+namespace CashFlow.Infraestructure.Security.Cryptography;
 internal class BCrypt : IPasswordEncripter
 {
     public string Encrypt(string password)
@@ -10,4 +10,6 @@ internal class BCrypt : IPasswordEncripter
 
         return passwordHash;
     }
+
+    public bool Verify(string password, string passwordHash) => BC.Verify(password, passwordHash);
 }
