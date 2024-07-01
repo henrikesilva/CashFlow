@@ -44,7 +44,7 @@ public static class DependencyInjectionExtension
 
     private static void AddDbContext(IServiceCollection services, IConfiguration configuration)
     {
-        var connectionString = configuration.GetConnectionString("Connection");
+        var connectionString = configuration.GetSection("Connection").Value;
 
         services.AddDbContext<CashFlowDbContext>(config =>
         {
