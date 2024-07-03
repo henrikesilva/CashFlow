@@ -5,6 +5,7 @@ using CashFlow.Domain.Security.Cryptography;
 using CashFlow.Domain.Security.Tokens;
 using CashFlow.Infraestructure.DataAccess;
 using CashFlow.Infraestructure.DataAccess.Repositories;
+using CashFlow.Infraestructure.Extensions;
 using CashFlow.Infraestructure.Security.Tokens;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -15,11 +16,15 @@ public static class DependencyInjectionExtension
 {
     public static void AddInfraestructure(this IServiceCollection services, IConfiguration configuration)
     {
-        AddDbContext(services, configuration);
         AddRepositories(services);
         AddToken(services, configuration);
 
         services.AddScoped<IPasswordEncripter, Security.Cryptography.BCrypt>();
+
+        if (configuration.IsTestEnvironment() == false)
+        {
+            AddDbContext(services, configuration);
+        }
     }
 
     private static void AddToken(IServiceCollection services, IConfiguration configuration)
@@ -44,12 +49,11 @@ public static class DependencyInjectionExtension
 
     private static void AddDbContext(IServiceCollection services, IConfiguration configuration)
     {
-        var connectionString = configuration.GetSection("Connection").Value;
+        var connectionString = configuration.GetConnectionString("Connection");
 
         services.AddDbContext<CashFlowDbContext>(config =>
         {
-            config.UseNpgsql(connectionString)
-                .UseSnakeCaseNamingConvention();
+            config.UseNpgsql(connectionString).UseSnakeCaseNamingConvention();
         });
     }
 }
