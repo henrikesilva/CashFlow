@@ -52,7 +52,7 @@ builder.Services.AddMvc(options => options.Filters.Add(typeof(ExceptionFilter)))
 builder.Services.AddInfraestructure(builder.Configuration);
 builder.Services.AddApplication();
 
-var signingKey = builder.Configuration.GetValue<string>("Settings:Jwt:SigningKey");
+var signingKey = builder.Configuration.GetValue<string>("JwtSigningKey");
 
 builder.Services.AddAuthentication(config =>
 {
