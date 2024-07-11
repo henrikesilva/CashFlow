@@ -3,10 +3,12 @@ using CashFlow.Domain.Repositories.Expenses;
 using CashFlow.Domain.Repositories.Users;
 using CashFlow.Domain.Security.Cryptography;
 using CashFlow.Domain.Security.Tokens;
+using CashFlow.Domain.Services.LoggedUser;
 using CashFlow.Infraestructure.DataAccess;
 using CashFlow.Infraestructure.DataAccess.Repositories;
 using CashFlow.Infraestructure.Extensions;
 using CashFlow.Infraestructure.Security.Tokens;
+using CashFlow.Infraestructure.Services.LoggedUser;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -20,6 +22,7 @@ public static class DependencyInjectionExtension
         AddToken(services, configuration);
 
         services.AddScoped<IPasswordEncripter, Security.Cryptography.BCrypt>();
+        services.AddScoped<ILoggedUser, LoggedUser>();
 
         if (configuration.IsTestEnvironment() == false)
         {
