@@ -4,7 +4,7 @@ using CashFlow.Exception;
 using CashFlow.Exception.ExceptionsBase;
 using CommomTestUtilities.Cryptography;
 using CommomTestUtilities.Entities;
-using CommomTestUtilities.Repositories;
+using CommomTestUtilities.Repositories.User;
 using CommomTestUtilities.Requests;
 using CommomTestUtilities.Token;
 using FluentAssertions;
