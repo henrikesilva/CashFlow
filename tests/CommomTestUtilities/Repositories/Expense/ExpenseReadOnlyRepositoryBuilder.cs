@@ -1,5 +1,4 @@
-﻿using CashFlow.Domain.Entities;
-using CashFlow.Domain.Repositories.Expenses;
+﻿using CashFlow.Domain.Repositories.Expenses;
 using Moq;
 
 namespace CommomTestUtilities.Repositories.Expense;
@@ -21,8 +20,15 @@ public class ExpenseReadOnlyRepositoryBuilder
 
     public ExpenseReadOnlyRepositoryBuilder GetById(CashFlow.Domain.Entities.User user, CashFlow.Domain.Entities.Expense? expense)
     {
-        if(expense is not null)
+        if (expense is not null)
             _repository.Setup(repository => repository.GetById(user, expense.Id)).ReturnsAsync(expense);
+
+        return this;
+    }
+
+    public ExpenseReadOnlyRepositoryBuilder FilterByMonth(CashFlow.Domain.Entities.User user, List<CashFlow.Domain.Entities.Expense> expenses)
+    {
+        _repository.Setup(repository => repository.FilterByMonth(user, It.IsAny<DateOnly>())).ReturnsAsync(expenses);
 
         return this;
     }

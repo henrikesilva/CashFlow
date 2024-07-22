@@ -17,7 +17,7 @@ public class ReportController : ControllerBase
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     public async Task<IActionResult> GetExcel(
         [FromServices] IGenerateExpensesReportExcelUseCase useCase,
-        [FromHeader] DateOnly month)
+        [FromQuery] DateOnly month)
     {
         byte[] file = await useCase.Execute(month);
 
@@ -32,7 +32,7 @@ public class ReportController : ControllerBase
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     public async Task<IActionResult> GetPdf(
         [FromServices] IGenerateExpenseReportPdfUseCase useCase,
-        [FromQuery] System.DateOnly month)
+        [FromQuery] DateOnly month)
     {
         byte[] file = await useCase.Execute(month);
 
