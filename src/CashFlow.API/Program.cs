@@ -85,6 +85,8 @@ app.UseMiddleware<CultureMiddleware>();
 
 app.UseHttpsRedirection();
 
+app.UseForwardedHeaders();
+
 app.UseAuthentication();
 app.UseAuthorization();
 
