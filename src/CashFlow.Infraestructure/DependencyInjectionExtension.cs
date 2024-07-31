@@ -3,9 +3,12 @@ using CashFlow.Domain.Repositories.Expenses;
 using CashFlow.Domain.Repositories.Users;
 using CashFlow.Domain.Security.Cryptography;
 using CashFlow.Domain.Security.Tokens;
+using CashFlow.Domain.Services.LoggedUser;
 using CashFlow.Infraestructure.DataAccess;
 using CashFlow.Infraestructure.DataAccess.Repositories;
+using CashFlow.Infraestructure.Extensions;
 using CashFlow.Infraestructure.Security.Tokens;
+using CashFlow.Infraestructure.Services.LoggedUser;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,11 +18,16 @@ public static class DependencyInjectionExtension
 {
     public static void AddInfraestructure(this IServiceCollection services, IConfiguration configuration)
     {
-        AddDbContext(services, configuration);
         AddRepositories(services);
         AddToken(services, configuration);
 
         services.AddScoped<IPasswordEncripter, Security.Cryptography.BCrypt>();
+        services.AddScoped<ILoggedUser, LoggedUser>();
+
+        if (configuration.IsTestEnvironment() == false)
+        {
+            AddDbContext(services, configuration);
+        }
     }
 
     private static void AddToken(IServiceCollection services, IConfiguration configuration)
@@ -40,16 +48,16 @@ public static class DependencyInjectionExtension
 
         services.AddScoped<IUserReadOnlyRepository, UserRepository>();
         services.AddScoped<IUserWriteOnlyRepository, UserRepository>();
+        services.AddScoped<IUserUpdateOnlyRepository, UserRepository>();
     }
 
     private static void AddDbContext(IServiceCollection services, IConfiguration configuration)
     {
-        var connectionString = configuration.GetSection("Connection").Value;
+        var connectionString = configuration.GetValue<string>("ConnectionStrings:Connection");
 
         services.AddDbContext<CashFlowDbContext>(config =>
         {
-            config.UseNpgsql(connectionString)
-                .UseSnakeCaseNamingConvention();
+            config.UseNpgsql(connectionString).UseSnakeCaseNamingConvention();
         });
     }
 }
