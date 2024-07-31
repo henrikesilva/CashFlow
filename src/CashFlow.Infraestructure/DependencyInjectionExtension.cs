@@ -32,8 +32,8 @@ public static class DependencyInjectionExtension
 
     private static void AddToken(IServiceCollection services, IConfiguration configuration)
     {
-        var expirationTimeMinutes = configuration.GetValue<uint>("JwtExpiresMinutes");
-        var signingKey = configuration.GetValue<string>("JwtSigningKey");
+        var expirationTimeMinutes = configuration.GetValue<uint>("Settings:Jwt:JwtExpiresMinutes");
+        var signingKey = configuration.GetValue<string>("Settings:Jwt:JwtSigningKey");
 
         services.AddScoped<IAccessTokenGenerator>(config => new JwtTokenGenerator(expirationTimeMinutes, signingKey!));
     }
@@ -53,7 +53,7 @@ public static class DependencyInjectionExtension
 
     private static void AddDbContext(IServiceCollection services, IConfiguration configuration)
     {
-        var connectionString = configuration.GetValue<string>("Connection");
+        var connectionString = configuration.GetValue<string>("ConnectionStrings:Connection");
 
         services.AddDbContext<CashFlowDbContext>(config =>
         {

@@ -73,7 +73,7 @@ public class UpdateUserUseCaseTest
         var unitOfWork = UnitOfWorkBuilder.Build();
         var updateRepository = UserUpdateOnlyRepositoryBuilder.Build(user);
         var loggedUser = LoggedUserBuilder.Build(user);
-        var readRepository = new UserReadOnlyRepositoryBuilder();
+        var readRepository = new CommomTestUtilities.Repositories.User.UserReadOnlyRepositoryBuilder();
 
         if (string.IsNullOrWhiteSpace(email) == false)
         {

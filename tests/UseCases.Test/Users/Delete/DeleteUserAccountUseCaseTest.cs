@@ -3,7 +3,6 @@ using CashFlow.Domain.Entities;
 using CommomTestUtilities.Entities;
 using CommomTestUtilities.LoggedUser;
 using CommomTestUtilities.Repositories;
-using CommomTestUtilities.Repositories.User;
 using FluentAssertions;
 
 namespace UseCases.Test.Users.Delete;
