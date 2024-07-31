@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 
 namespace CashFlow.Infraestructure.DataAccess;
-internal class CashFlowDbContext : DbContext
+public class CashFlowDbContext : DbContext
 {
     public CashFlowDbContext(DbContextOptions options) : base(options) 
     {
@@ -10,5 +10,6 @@ internal class CashFlowDbContext : DbContext
     }
 
     public DbSet<Expense> Expenses { get; set; }
+    public DbSet<User> Users { get; set; }
 
 }

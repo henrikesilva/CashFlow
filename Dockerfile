@@ -9,6 +9,8 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 ENV Connection=""
+ENV JwtExpiresMinutes=""
+ENV JwtSigningKey=""
 WORKDIR /src
 COPY ["src/CashFlow.API/CashFlow.API.csproj", "src/CashFlow.API/"]
 COPY ["src/CashFlow.Application/CashFlow.Application.csproj", "src/CashFlow.Application/"]
