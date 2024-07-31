@@ -1,21 +1,24 @@
 ## Sobre o Projeto
 
-Esta API, desenvolvida utilizando **.NET 8**, adota os princípios do **Domain-Driven Design(DDD)** para oferecer uma solução estruturada e eficaz no gerenciamento de despesas pessoais. O principal objetivo é permitir que os usuários registrem suas despesas, detalhando informações como título, data e hora, descrição, valor e tipo de pagamento, com os dados sendo armazenados de forma segura em um banco de dados **PostreSql** hospedado no portal ***[render][render]***.
+Esta API, desenvolvida utilizando **.NET 8**, adota os princípios do **Domain-Driven Design(DDD)** para oferecer uma solução estruturada e eficaz no gerenciamento de despesas pessoais. O principal objetivo é permitir que os usuários registrem suas despesas, detalhando informações como título, data e hora, descrição, valor e tipo de pagamento, com os dados sendo armazenados de forma segura em um banco de dados **PostreSql**.
 
 A arquitetura da API baseia-se em REST, utilizando métodos **HTTP** padrão para uma comunicação eficiente e simplificada. Além disso, é complementada por uma documentação **Swagger**, que proporciona uma interface gráfica interativa para que os desenolvedores possam explorar e testar os endpoints de maneira fácil.
+É base ainda do projeto a cobertura de testes de unidade e integração para garantir o funcionamento do código em todas as pontas importantes, verificando as regras de negócio definidas no escopo do projeto e o funcionamento de ponta a ponta desde a chamada nos endpoints até a manipulação de dados em banco de dados, para isso é utilizada a estratégia de uso de banco de dados em memória que é criado no momento da execução dos testes e deletado ao final dos mesmos.
 
 Dentre os pacotes **NuGet** utilizados, o **AutoMapper** é o responsável pelo mapeamento entre objetos de domínio e requisição/resposta, reduzindo a necessidade de código repetitivo e manual. O **FluentAssertions** é utilizados nos testes de unidade para tornar as verificação mais legíveis, ajudando a escrever testes claros e compreensíveis.
-Para as validações, o **FluentValidation** é usado para implementar regras de validação de forma simples e intuitiva nas classes de requisições, mantendo o código limpo e fácil de manter. Por fim, o **EntityFramework** atua como um **ORM (Object-Relational Mapper)** que simplifica as interações com o banco de dados, permitindo o uso de objetos **.NET** para manipular dados diretamente, sem a necessidade de lidar com consultas SQL.
+Para as validações, o **FluentValidation** é usado para implementar regras de validação de forma simples e intuitiva nas classes de requisições, mantendo o código limpo e fácil de manter. Por fim, o **EntityFramework** atua como um **ORM (Object-Relational Mapper)** que simplifica as interações com o banco de dados, permitindo o uso de objetos **.NET** para manipular dados diretamente, sem a necessidade de lidar com consultas SQL. 
+Para os testes de unidade e integração são utilizados os pacotes do **Bogus** que garante a simulação de nossas entidades de dominío e comunicação, além do **Moq** que nos permite o uso de instâncias de nossas interfaces de maneira a não prejudicar o funcionamento produtivo da aplicação. 
 
 ![hero-image]
 
 ### Features
 
 - **Domain-Driven Design (DDD)**: Estrutura modular que facilita o entendimento e a manutenção do domínio da aplicação
-- **Testes de Unidade**: Testes abrangentes com FluentAssertions para garantir a funcionalidade e a qualidade do código.
+- **Testes de Unidade e Integração**: Testes abrangentes com FluentAssertions para garantir a funcionalidade e a qualidade do código.
 - **Geração de Relatórios**: Capacidade de exportar relatórios detalhados para **PDF e Excel**, oferencendo uma análise visual e eficaz das despesas.
 - **RESTful API com Documentação Swagger**: Interface documentada que facilita a integração e o teste por parte dos desenvolvedores.
 - **Conceitos de SOLID**: Estrutura do projeto construída seguindo princípios do SOLID afim de facilitar a manutenção e legibilidade dos código.
+- **Uso de autenticação JWT Bearer**: Uso de autenticação através de tokens JWT garantindo a segurança ao permitir ou bloquear acessos a endpoints sensíveis.
 
 ## Construído com
 
@@ -37,18 +40,14 @@ Para obter uma cópia local funcionando, siga estes passos simples.
 
 ### Instalação
 
-1. Clone o repositório:
+1. Clone o repositório a partir da branch `main`:
     ```sh
     git clone https://github.com/henrikesilva/CashFlow.git
     ```
 
-2. Preencha as informações no arquivo `appsettings.Development.json`.
-    - *Caso opte por utilizar uma instância diferente de banco de dados*
-3. Execute a API e aproveite o seu teste :)
-
-### Teste em Produção
-
-Caso você opte, pode efetuar os testes na API publicada em produção a partir da branch main através desse [link][deployed]
+2. Crie uma nova branch
+3. Preencha as informações no arquivo `appsettings.Development.json`.
+4. Execute a API e aproveite o seu teste :)
 
 
 
