@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 namespace CashFlow.Infraestructure.DataAccess;
 public class CashFlowDbContext : DbContext
 {
-    public CashFlowDbContext(DbContextOptions options) : base(options) 
+    public CashFlowDbContext(DbContextOptions options) : base(options)
     {
         AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
     }
@@ -12,4 +12,10 @@ public class CashFlowDbContext : DbContext
     public DbSet<Expense> Expenses { get; set; }
     public DbSet<User> Users { get; set; }
 
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+
+        modelBuilder.Entity<Tag>().ToTable("Tags");
+    }
 }
